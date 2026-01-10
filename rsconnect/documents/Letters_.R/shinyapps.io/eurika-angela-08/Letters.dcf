@@ -1,0 +1,12 @@
+name: Letters
+title: Letters
+username: eurika-angela-08
+account: eurika-angela-08
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16400850
+bundleId:
+url: https://eurika-angela-08.shinyapps.io/Letters/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
