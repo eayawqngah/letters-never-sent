@@ -1,20 +1,39 @@
 library(shiny)
 library(DBI)
-library(RMariaDB)
+library(RSQLite)
 library(dplyr)
 library(DT)
 library(shinyjs)
-library(rsconnect)
 
 # Database connection function
 get_db_connection <- function() {
-  dbConnect(
-    MariaDB(),
-    host = "localhost",
-    dbname = "letters_diary",
-    user = "root",
-    password = "" 
-  )
+  # Create database directory
+  if (!dir.exists("data")) {
+    dir.create("data")
+  }
+  
+  # Connect to SQLite database
+  dbConnect(RSQLite::SQLite(), "data/letters_diary.sqlite")
+}
+
+# Initialize database and create table
+initialize_database <- function() {
+  con <- get_db_connection()
+  
+  # Create letters table
+  create_table_sql <- "
+  CREATE TABLE IF NOT EXISTS letters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    recipient TEXT DEFAULT 'Myself',
+    letter_content TEXT NOT NULL,
+    mood TEXT NOT NULL,
+    date_created DATE DEFAULT (date('now')),
+    date_modified DATE DEFAULT (date('now'))
+  );"
+  
+  dbExecute(con, create_table_sql)
+  dbDisconnect(con)
 }
 
 # CRUD Operations
@@ -59,7 +78,7 @@ get_letter_by_id <- function(id) {
 update_letter <- function(id, title, recipient, content, mood) {
   con <- get_db_connection()
   tryCatch({
-    query <- "UPDATE letters SET title = ?, recipient = ?, letter_content = ?, mood = ?, date_modified = CURRENT_DATE WHERE id = ?"
+    query <- "UPDATE letters SET title = ?, recipient = ?, letter_content = ?, mood = ?, date_modified = date('now') WHERE id = ?"
     result <- dbExecute(con, query, params = list(title, recipient, content, mood, id))
     dbDisconnect(con)
     return(result)
@@ -85,7 +104,8 @@ delete_letter <- function(id) {
 get_recent_letters <- function(limit = 3) {
   con <- get_db_connection()
   tryCatch({
-    letters <- dbGetQuery(con, paste0("SELECT * FROM letters ORDER BY date_created DESC, id DESC LIMIT ", limit))
+    query <- paste0("SELECT * FROM letters ORDER BY date_created DESC, id DESC LIMIT ", limit)
+    letters <- dbGetQuery(con, query)
     dbDisconnect(con)
     return(letters)
   }, error = function(e) {
@@ -1525,6 +1545,8 @@ ui <- fluidPage(
 
 # Server
 server <- function(input, output, session) {
+  # Initialize database
+  initialize_database()
   
   # Login variables
   login_attempts <- reactiveVal(0)
