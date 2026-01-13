@@ -646,6 +646,18 @@ ui <- fluidPage(
         margin-bottom: 20px;
       }
       
+      @media (max-width: 768px) {
+        .mood-selector-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .mood-selector-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
       .mood-option {
         background: white;
         border: 2px solid #C6BDA7;
@@ -680,58 +692,60 @@ ui <- fluidPage(
         margin-top: 5px;
       }
       
+      .mood-option[data-mood='Hopeful'] { border-color: #9CAF88; }
+      .mood-option[data-mood='Hopeful'].selected { background-color: #9CAF88; color: white; }
+      .mood-option[data-mood='Hopeful'] i { color: #9CAF88; }
+      .mood-option[data-mood='Hopeful'].selected i { color: white; }
+      
       .mood-option[data-mood='Happy'] { border-color: #A5AA70; }
       .mood-option[data-mood='Happy'].selected { background-color: #A5AA70; color: white; }
       .mood-option[data-mood='Happy'] i { color: #A5AA70; }
       .mood-option[data-mood='Happy'].selected i { color: white; }
       
-      .mood-option[data-mood='Sad'] { border-color: #8A8270; }
-      .mood-option[data-mood='Sad'].selected { background-color: #8A8270; color: white; }
-      .mood-option[data-mood='Sad'] i { color: #8A8270; }
-      .mood-option[data-mood='Sad'].selected i { color: white; }
-      
-      .mood-option[data-mood='Neutral'] { border-color: #E8E6E1; }
-      .mood-option[data-mood='Neutral'].selected { background-color: #E8E6E1; color: #7A8450; }
-      .mood-option[data-mood='Neutral'] i { color: #AAA18F; }
-      
-      .mood-option[data-mood='Loving'] { border-color: #D4C5A7; }
-      .mood-option[data-mood='Loving'].selected { background-color: #D4C5A7; color: #7A8450; }
-      .mood-option[data-mood='Loving'] i { color: #D4C5A7; }
-      
-      .mood-option[data-mood='Anxious'] { border-color: #B8C6A7; }
-      .mood-option[data-mood='Anxious'].selected { background-color: #B8C6A7; color: white; }
-      .mood-option[data-mood='Anxious'] i { color: #B8C6A7; }
-      .mood-option[data-mood='Anxious'].selected i { color: white; }
-      
-      .mood-option[data-mood='Angry'] { border-color: #7A8450; }
-      .mood-option[data-mood='Angry'].selected { background-color: #7A8450; color: white; }
-      .mood-option[data-mood='Angry'] i { color: #7A8450; }
-      .mood-option[data-mood='Angry'].selected i { color: white; }
-      
-      .mood-option[data-mood='Excited'] { border-color: #A5AA70; }
-      .mood-option[data-mood='Excited'].selected { background-color: #A5AA70; color: white; }
-      .mood-option[data-mood='Excited'] i { color: #A5AA70; }
-      .mood-option[data-mood='Excited'].selected i { color: white; }
+      .mood-option[data-mood='Grateful'] { border-color: #C6BDA7; }
+      .mood-option[data-mood='Grateful'].selected { background-color: #C6BDA7; color: #7A8450; border-color: #A5AA70; }
+      .mood-option[data-mood='Grateful'] i { color: #A5AA70; }
+      .mood-option[data-mood='Grateful'].selected i { color: #7A8450; }
       
       .mood-option[data-mood='Melancholic'] { border-color: #AAA18F; }
       .mood-option[data-mood='Melancholic'].selected { background-color: #AAA18F; color: white; }
       .mood-option[data-mood='Melancholic'] i { color: #AAA18F; }
       .mood-option[data-mood='Melancholic'].selected i { color: white; }
       
-      .mood-option[data-mood='Hopeful'] { border-color: #9CAF88; }
-      .mood-option[data-mood='Hopeful'].selected { background-color: #9CAF88; color: white; }
-      .mood-option[data-mood='Hopeful'] i { color: #9CAF88; }
-      .mood-option[data-mood='Hopeful'].selected i { color: white; }
+      .mood-option[data-mood='Sad'] { border-color: #8A8270; }
+      .mood-option[data-mood='Sad'].selected { background-color: #8A8270; color: white; }
+      .mood-option[data-mood='Sad'] i { color: #8A8270; }
+      .mood-option[data-mood='Sad'].selected i { color: white; }
       
-      .mood-option[data-mood='Grateful'] { border-color: #A5AA70; }
-      .mood-option[data-mood='Grateful'].selected { background-color: #C6BDA7; color: #7A8450; border-color: #A5AA70; }
-      .mood-option[data-mood='Grateful'] i { color: #A5AA70; }
-      .mood-option[data-mood='Grateful'].selected i { color: #7A8450; }
+      .mood-option[data-mood='Angry'] { border-color: #7A8450; }
+      .mood-option[data-mood='Angry'].selected { background-color: #7A8450; color: white; }
+      .mood-option[data-mood='Angry'] i { color: #7A8450; }
+      .mood-option[data-mood='Angry'].selected i { color: white; }
       
       .mood-option[data-mood='Regretful'] { border-color: #9CAF88; }
       .mood-option[data-mood='Regretful'].selected { background-color: #9CAF88; color: white; }
       .mood-option[data-mood='Regretful'] i { color: #9CAF88; }
       .mood-option[data-mood='Regretful'].selected i { color: white; }
+      
+      .mood-option[data-mood='Neutral'] { border-color: #E8E6E1; }
+      .mood-option[data-mood='Neutral'].selected { background-color: #E8E6E1; color: #7A8450; }
+      .mood-option[data-mood='Neutral'] i { color: #AAA18F; }
+      .mood-option[data-mood='Neutral'].selected i { color: #7A8450; }
+      
+      .mood-option[data-mood='Loving'] { border-color: #D4C5A7; }
+      .mood-option[data-mood='Loving'].selected { background-color: #D4C5A7; color: #7A8450; }
+      .mood-option[data-mood='Loving'] i { color: #D4C5A7; }
+      .mood-option[data-mood='Loving'].selected i { color: #7A8450; }
+      
+      .mood-option[data-mood='Anxious'] { border-color: #B8C6A7; }
+      .mood-option[data-mood='Anxious'].selected { background-color: #B8C6A7; color: white; }
+      .mood-option[data-mood='Anxious'] i { color: #B8C6A7; }
+      .mood-option[data-mood='Anxious'].selected i { color: white; }
+      
+      .mood-option[data-mood='Excited'] { border-color: #A5AA70; }
+      .mood-option[data-mood='Excited'].selected { background-color: #A5AA70; color: white; }
+      .mood-option[data-mood='Excited'] i { color: #A5AA70; }
+      .mood-option[data-mood='Excited'].selected i { color: white; }
       
       .modal-dialog textarea,
       #modal_content,
@@ -1693,17 +1707,37 @@ server <- function(input, output, session) {
       size = "l",
       
       div(
-        # Mood selector
+        # Mood selector - UPDATED TO MATCH ALL FILTER MOODS
         div(class = "mood-selector-container",
             tags$label(class = "mood-selector-label", "How are you feeling right now?"),
             div(class = "mood-selector-grid",
+                tags$div(class = "mood-option", `data-mood` = "Hopeful", onclick = "Shiny.setInputValue('modal_mood_click', 'Hopeful', {priority: 'event'});",
+                         tags$i(class = "fas fa-seedling"),
+                         div(class = "mood-label", "Hopeful")
+                ),
                 tags$div(class = "mood-option", `data-mood` = "Happy", onclick = "Shiny.setInputValue('modal_mood_click', 'Happy', {priority: 'event'});",
                          tags$i(class = "fas fa-smile"),
                          div(class = "mood-label", "Happy")
                 ),
+                tags$div(class = "mood-option", `data-mood` = "Grateful", onclick = "Shiny.setInputValue('modal_mood_click', 'Grateful', {priority: 'event'});",
+                         tags$i(class = "fas fa-hands-praying"),
+                         div(class = "mood-label", "Grateful")
+                ),
+                tags$div(class = "mood-option", `data-mood` = "Melancholic", onclick = "Shiny.setInputValue('modal_mood_click', 'Melancholic', {priority: 'event'});",
+                         tags$i(class = "fas fa-cloud-moon"),
+                         div(class = "mood-label", "Melancholic")
+                ),
                 tags$div(class = "mood-option", `data-mood` = "Sad", onclick = "Shiny.setInputValue('modal_mood_click', 'Sad', {priority: 'event'});",
                          tags$i(class = "fas fa-sad-tear"),
                          div(class = "mood-label", "Sad")
+                ),
+                tags$div(class = "mood-option", `data-mood` = "Angry", onclick = "Shiny.setInputValue('modal_mood_click', 'Angry', {priority: 'event'});",
+                         tags$i(class = "fas fa-fire"),
+                         div(class = "mood-label", "Angry")
+                ),
+                tags$div(class = "mood-option", `data-mood` = "Regretful", onclick = "Shiny.setInputValue('modal_mood_click', 'Regretful', {priority: 'event'});",
+                         tags$i(class = "fas fa-undo"),
+                         div(class = "mood-label", "Regretful")
                 ),
                 tags$div(class = "mood-option", `data-mood` = "Neutral", onclick = "Shiny.setInputValue('modal_mood_click', 'Neutral', {priority: 'event'});",
                          tags$i(class = "fas fa-meh"),
@@ -1717,17 +1751,9 @@ server <- function(input, output, session) {
                          tags$i(class = "fas fa-cloud"),
                          div(class = "mood-label", "Anxious")
                 ),
-                tags$div(class = "mood-option", `data-mood` = "Angry", onclick = "Shiny.setInputValue('modal_mood_click', 'Angry', {priority: 'event'});",
-                         tags$i(class = "fas fa-fire"),
-                         div(class = "mood-label", "Angry")
-                ),
                 tags$div(class = "mood-option", `data-mood` = "Excited", onclick = "Shiny.setInputValue('modal_mood_click', 'Excited', {priority: 'event'});",
                          tags$i(class = "fas fa-bolt"),
                          div(class = "mood-label", "Excited")
-                ),
-                tags$div(class = "mood-option", `data-mood` = "Melancholic", onclick = "Shiny.setInputValue('modal_mood_click', 'Melancholic', {priority: 'event'});",
-                         tags$i(class = "fas fa-droplet"),
-                         div(class = "mood-label", "Melancholic")
                 )
             )
         ),
@@ -1934,19 +1960,44 @@ server <- function(input, output, session) {
         size = "l",
         
         div(
-          # Mood selector
+          # Mood selector - UPDATED TO MATCH ALL FILTER MOODS
           div(class = "mood-selector-container",
               tags$label(class = "mood-selector-label", "How are you feeling right now?"),
               div(class = "mood-selector-grid",
+                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Hopeful") " selected" else ""), 
+                           `data-mood` = "Hopeful", onclick = "Shiny.setInputValue('edit_mood_click', 'Hopeful', {priority: 'event'});",
+                           tags$i(class = "fas fa-seedling"),
+                           div(class = "mood-label", "Hopeful")
+                  ),
                   tags$div(class = paste0("mood-option", if(letter$mood[1] == "Happy") " selected" else ""), 
                            `data-mood` = "Happy", onclick = "Shiny.setInputValue('edit_mood_click', 'Happy', {priority: 'event'});",
                            tags$i(class = "fas fa-smile"),
                            div(class = "mood-label", "Happy")
                   ),
+                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Grateful") " selected" else ""), 
+                           `data-mood` = "Grateful", onclick = "Shiny.setInputValue('edit_mood_click', 'Grateful', {priority: 'event'});",
+                           tags$i(class = "fas fa-hands-praying"),
+                           div(class = "mood-label", "Grateful")
+                  ),
+                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Melancholic") " selected" else ""), 
+                           `data-mood` = "Melancholic", onclick = "Shiny.setInputValue('edit_mood_click', 'Melancholic', {priority: 'event'});",
+                           tags$i(class = "fas fa-cloud-moon"),
+                           div(class = "mood-label", "Melancholic")
+                  ),
                   tags$div(class = paste0("mood-option", if(letter$mood[1] == "Sad") " selected" else ""), 
                            `data-mood` = "Sad", onclick = "Shiny.setInputValue('edit_mood_click', 'Sad', {priority: 'event'});",
                            tags$i(class = "fas fa-sad-tear"),
                            div(class = "mood-label", "Sad")
+                  ),
+                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Angry") " selected" else ""), 
+                           `data-mood` = "Angry", onclick = "Shiny.setInputValue('edit_mood_click', 'Angry', {priority: 'event'});",
+                           tags$i(class = "fas fa-fire"),
+                           div(class = "mood-label", "Angry")
+                  ),
+                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Regretful") " selected" else ""), 
+                           `data-mood` = "Regretful", onclick = "Shiny.setInputValue('edit_mood_click', 'Regretful', {priority: 'event'});",
+                           tags$i(class = "fas fa-undo"),
+                           div(class = "mood-label", "Regretful")
                   ),
                   tags$div(class = paste0("mood-option", if(letter$mood[1] == "Neutral") " selected" else ""), 
                            `data-mood` = "Neutral", onclick = "Shiny.setInputValue('edit_mood_click', 'Neutral', {priority: 'event'});",
@@ -1963,20 +2014,10 @@ server <- function(input, output, session) {
                            tags$i(class = "fas fa-cloud"),
                            div(class = "mood-label", "Anxious")
                   ),
-                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Angry") " selected" else ""), 
-                           `data-mood` = "Angry", onclick = "Shiny.setInputValue('edit_mood_click', 'Angry', {priority: 'event'});",
-                           tags$i(class = "fas fa-fire"),
-                           div(class = "mood-label", "Angry")
-                  ),
                   tags$div(class = paste0("mood-option", if(letter$mood[1] == "Excited") " selected" else ""), 
                            `data-mood` = "Excited", onclick = "Shiny.setInputValue('edit_mood_click', 'Excited', {priority: 'event'});",
                            tags$i(class = "fas fa-bolt"),
                            div(class = "mood-label", "Excited")
-                  ),
-                  tags$div(class = paste0("mood-option", if(letter$mood[1] == "Melancholic") " selected" else ""), 
-                           `data-mood` = "Melancholic", onclick = "Shiny.setInputValue('edit_mood_click', 'Melancholic', {priority: 'event'});",
-                           tags$i(class = "fas fa-droplet"),
-                           div(class = "mood-label", "Melancholic")
                   )
               )
           ),
